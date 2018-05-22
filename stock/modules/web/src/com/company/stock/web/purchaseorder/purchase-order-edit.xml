@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.stock.web.purchaseorder.PurchaseOrderEdit"
+        datasource="purchaseOrderDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.stock.web.purchaseorder">
+    <dsContext>
+        <datasource id="purchaseOrderDs"
+                    class="com.company.stock.entity.PurchaseOrder"
+                    view="purchaseOrder-view"/>
+        <collectionDatasource id="customersDs"
+                              class="com.company.stock.entity.Customer"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from stock$Customer e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="itemsesDs"
+                              class="com.company.stock.entity.Item"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from stock$Item e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="purchaseOrderDs">
+            <column width="250px">
+                <field property="dateOfTransaction"/>
+                <field optionsDatasource="customersDs"
+                       property="customer"/>
+                <field optionsDatasource="itemsesDs"
+                       property="items"/>
+                <field property="tax"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

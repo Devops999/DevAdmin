@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.stock.web.ext4.purchaseorder.PurchaseBrowseCustomers"
+        focusComponent="purchaseOrdersTable"
+        lookupComponent="purchaseOrdersTable"
+        messagesPack="com.company.stock.web.ext4.purchaseorder">
+    <dsContext>
+        <groupDatasource id="purchaseOrdersDs"
+                         class="com.company.stock.entity.PurchaseOrder"
+                         view="purchaseOrder-view">
+            <query>
+                <![CDATA[select e from stock$PurchaseOrder e]]>
+            </query>
+        </groupDatasource>
+        <collectionDatasource id="customersDs"
+                              class="com.company.stock.entity.Customer"
+                              view="_local">
+            <query>
+                <![CDATA[select e from stock$Customer e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tablesBox"
+            spacing="true">
+        <label value="Create, edit or remove an order, then refresh the customers table, and you will see that the Total amount of the corresponding customer is changed."/>
+        <vbox id="tablesBox">
+            <groupBox caption="PurchaseOrder"
+                      height="100%"
+                      stylename="light">
+                <groupTable id="purchaseOrdersTable"
+                            width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                        <action id="refresh"/>
+                    </actions>
+                    <columns>
+                        <column id="dateOfTransaction"/>
+                        <column id="customer"/>
+                        <column id="items"/>
+                        <column id="tax"/>
+                    </columns>
+                    <rows datasource="purchaseOrdersDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="purchaseOrdersTable.create"/>
+                        <button id="editBtn"
+                                action="purchaseOrdersTable.edit"/>
+                        <button id="removeBtn"
+                                action="purchaseOrdersTable.remove"/>
+                        <button action="purchaseOrdersTable.refresh"/>
+                    </buttonsPanel>
+                </groupTable>
+            </groupBox>
+            <groupBox caption="Customers"
+                      height="100%"
+                      stylename="light">
+                <table id="customersTable"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="refresh"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="totalAmount"/>
+                        <column id="amountAfterTax"/>
+                    </columns>
+                    <rows datasource="customersDs"/>
+                    <buttonsPanel>
+                        <button action="customersTable.refresh"
+                                align="MIDDLE_LEFT"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </vbox>
+    </layout>
+</window>

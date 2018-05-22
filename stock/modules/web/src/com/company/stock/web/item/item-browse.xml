@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.stock.web.item.ItemBrowse"
+        focusComponent="itemsTable"
+        lookupComponent="itemsTable"
+        messagesPack="com.company.stock.web.item">
+    <dsContext>
+        <groupDatasource id="itemsDs"
+                         class="com.company.stock.entity.Item"
+                         view="item-view">
+            <query>
+                <![CDATA[select e from stock$Item e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="itemsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="itemsTable"
+                datasource="itemsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="itemsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="category"/>
+                <column id="description"/>
+                <column id="customer"/>
+                <column id="price"/>
+                <column id="quantity"/>
+            </columns>
+            <rows datasource="itemsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="itemsTable.create"/>
+                <button id="editBtn"
+                        action="itemsTable.edit"/>
+                <button id="removeBtn"
+                        action="itemsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>
