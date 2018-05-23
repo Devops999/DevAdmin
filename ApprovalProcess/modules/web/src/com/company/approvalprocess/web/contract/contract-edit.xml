@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.approvalprocess.web.contract.ContractEdit"
+        datasource="contractDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.approvalprocess.web.contract">
+    <dsContext>
+        <datasource id="contractDs"
+                    class="com.company.approvalprocess.entity.Contract"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="contractDs">
+            <column width="250px">
+                <field property="number"/>
+                <field property="date"/>
+                <field editable="false"
+                       property="state"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="procActionsBox"
+                  caption="msg://process"
+                  orientation="vertical"
+                  spacing="true"
+                  width="AUTO">
+            <frame id="procActionsFrame"
+                   screen="procActionsFrame"
+                   width="250px"/>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
