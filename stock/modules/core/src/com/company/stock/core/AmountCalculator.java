@@ -39,25 +39,7 @@ import java.util.UUID;
             return sum;
 
         }
-        // if (sum == null)
-        //    sum = BigDecimal.ZERO;
 
-
-        // Decide about discount
-        // BigDecimal discount = BigDecimal.ZERO;
-        //  if (sum.intValue() > 300)
-        //     tax = new BigDecimal("0.30");
-        //   tax = discount.multiply(sum);
-
-        //BigDecimal  totalAmount  = sum .add(discount);
-
-        //  return totalAmount ;
-        // }
-
-
-        /*public BigDecimal AmountAfterTax1(UUID purchaseOrderId){
-            return null;
-        }*/
         public BigDecimal AmountAfterTax(PurchaseOrder purchaseOrderId) {
             BigDecimal taxAmount= purchaseOrderId.getTax();
             BigDecimal sum= purchaseOrderId.getCustomer().getTotalAmount();
@@ -69,7 +51,7 @@ import java.util.UUID;
                return finalAmount;
 
 }    }
-        // }
+
 
 
 

@@ -68,22 +68,15 @@ public class ItemEntityListener implements BeforeDeleteEntityListener<PurchaseOr
      private void calculateAmount(Customer customer, EntityManager entityManager) {
         if (customer == null)
             return;
-        
-        // Delegate calculation to a managed bean of the middle tier
         BigDecimal amount = amountCalculator.calculateAmount(customer.getId());
-
-        // Merge customer instance because it comes here as part of another entity's object graph and can be detached
         Customer managedCustomer = entityManager.merge(customer);
-
-        // Set the discount for the customer. It will be saved on transaction commit.
         managedCustomer.setTotalAmount(amount);
 }
     private void  AmountAfterTax(Customer customer, EntityManager entityManager) {
         if (customer == null)
             return;
-        // Delegate calculation to a managed bean of the middle tier
-       // BigDecimal tax = tax1.AmountAfterTax(customer.getAmountAfterTax());
-       // customer.setAmountAfterTax(tax);
+     //   BigDecimal tax = tax1.AmountAfterTax(customer.getAmountAfterTax());
+     //   customer.setAmountAfterTax(tax);
 
 }
    // private void  AmountAfterTax1(PurchaseOrder purchaseOrder, EntityManager entityManager) {

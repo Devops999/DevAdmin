@@ -36,9 +36,9 @@ public class PurchaseOrderServiceBean implements PurchaseOrderService {
         return amountCalculator. AmountAfterTax(purchaseOrder);
     }
 
-    @Override
-    public BigDecimal AmountAfterTax1(UUID purchaseOrderId) {
-        return null;
+    //@Override
+   // public BigDecimal AmountAfterTax1(UUID purchaseOrderId) {
+    //    return null;
         //amountCalculator. AmountAfterTax(purchaseOrderId);
     }
 
@@ -56,4 +56,3 @@ v =
         }
         return null;
     }*/
-}

@@ -11,7 +11,7 @@ public interface PurchaseOrderService {
     String NAME = "stock_PurchaseOrderService";
     BigDecimal calculateAmount(UUID customerId);
     BigDecimal  AmountAfterTax (PurchaseOrder purchaseOrderId);
-    BigDecimal  AmountAfterTax1 (UUID purchaseOrderId);
+   // BigDecimal  AmountAfterTax1 (UUID purchaseOrderId);
 
     // BigDecimal quantity(Item item) ;*/
 
