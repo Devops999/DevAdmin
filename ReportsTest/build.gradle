@@ -39,7 +39,7 @@ apply(plugin: 'cuba')
 
 cuba {
     artifact {
-        group = 'com.company.stock'
+        group = 'com.company.reportstest'
         version = '0.1'
         isSnapshot = true
     }
@@ -50,7 +50,6 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("com.haulmont.bpm:bpm-global:$cubaVersion")
     appComponent("com.haulmont.reports:reports-global:$cubaVersion")
 
 }
@@ -117,7 +116,7 @@ configure(coreModule) {
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
         dbms = 'hsql'
         host = 'localhost'
-        dbName = 'stock'
+        dbName = 'reportstest'
         dbUser = 'sa'
         dbPassword = ''
     }
@@ -125,7 +124,7 @@ configure(coreModule) {
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
         dbms = 'hsql'
         host = 'localhost'
-        dbName = 'stock'
+        dbName = 'reportstest'
         dbUser = 'sa'
         dbPassword = ''
     }
@@ -139,7 +138,7 @@ configure(guiModule) {
 
     task deployConf(type: Copy) {
         from file('src')
-        include "com/company/stock/**"
+        include "com/company/reportstest/**"
         into "$cuba.tomcat.dir/conf/${modulePrefix}"
     }
 }
@@ -167,7 +166,7 @@ configure(webModule) {
 
     task deployConf(type: Copy) {
         from file('src')
-        include "com/company/stock/**"
+        include "com/company/reportstest/**"
         into "$cuba.tomcat.dir/conf/${modulePrefix}"
     }
 

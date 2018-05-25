@@ -11,14 +11,14 @@
     <!-- Application properties config files -->
     <context-param>
         <param-name>appPropertiesConfig</param-name>
-        <param-value>classpath:com/company/stock/web-app.properties
+        <param-value>classpath:com/company/reportstest/web-app.properties
             /WEB-INF/local.app.properties
             "file:${catalina.base}/conf/app/local.app.properties"</param-value>
     </context-param>
     <!--Application components-->
     <context-param>
         <param-name>appComponents</param-name>
-        <param-value>com.haulmont.cuba com.haulmont.bpm com.haulmont.reports</param-value>
+        <param-value>com.haulmont.cuba com.haulmont.reports</param-value>
     </context-param>
     <listener>
         <listener-class>com.vaadin.server.communication.JSR356WebsocketInitializer</listener-class>

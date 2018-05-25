@@ -30,7 +30,7 @@
             <groupBox caption="PurchaseOrder"
                       height="100%"
                       stylename="light">
-                <groupTable id="purchaseOrdersTable"
+                <groupTable id="purchaseOrdersTable" datasource = "purchaseOrdersDs"
                             width="100%">
                     <actions>
                         <action id="create"/>
@@ -55,6 +55,8 @@
                         <button id="removeBtn"
                                 action="purchaseOrdersTable.remove"/>
                         <button action="purchaseOrdersTable.refresh"/>
+                        <button id="printDetails"
+                                caption="msg://printDetails"/>
                     </buttonsPanel>
                 </groupTable>
             </groupBox>
